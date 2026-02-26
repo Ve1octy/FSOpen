@@ -1,0 +1,19 @@
+sequesnceDiagram
+    participant browser
+    participant server
+
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+    activate server
+
+    Note right of browser:  content type: application/json
+    date: "2016-02-26T16:47:30.185Z"
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate server
+    server->>browser: 201 created
+    deactivate server
+
+    Note right of browser: browser executes event handler and renders notes for display
+
+    

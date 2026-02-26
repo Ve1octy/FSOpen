@@ -1,0 +1,36 @@
+sequesnceDiagram
+    participant browser
+    participant server
+
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    activate server
+
+    Note right of browser: New note sent: Heey Yaaa
+
+    server->>browser: GET request to /notes
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes 
+    activate server
+    server->>browser: HTML document
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate server
+    server->>browser: the css file
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    activate server
+    server->>browser: the JavaScript file
+    deactivate server
+
+    Note right of browser: browser executes js code that requests JSON data
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate server
+    server->>browser: [{content: "Heey Yaaa", date: 2026-02-26}. ...]
+    deactivate server
+
+    Note right of browser: browser executes event handler and renders notes for display
